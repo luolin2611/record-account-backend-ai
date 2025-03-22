@@ -73,7 +73,7 @@ public class UserController {
         // 发送验证码
         String checkCode = Util.getStringNumRandom(6);
         String content = String.format(Constant.REGISTER_EMAIL_CONTENT, checkCode);
-//        emailUtil.sendSimpleMail(email, "用户注册", content);
+        emailUtil.sendSimpleMail(email, "用户注册", content);
         redisTemplate.opsForValue().set(cacheCodeKey, checkCode, CHECK_CODE_EFFECTIVE_TIME, TimeUnit.MINUTES);
         log.debug("验证码发送成功，验证码保存Key为：{}, 验证码为：{}", cacheCodeKey, checkCode);
         return Response.buildSuccess();

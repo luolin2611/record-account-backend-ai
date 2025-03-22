@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 2024-12-27 22:53:55
  */
 @SpringBootApplication
-public class PasswordAssistantApplication {
+public class RecordAccountApplication {
     public static void main(String[] args) {
-        SpringApplication.run(PasswordAssistantApplication.class);
+        SpringApplication.run(RecordAccountApplication.class);
     }
 }

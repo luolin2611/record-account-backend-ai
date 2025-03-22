@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.rollin.passwordassistant.mapper.RecordAccountMapper">
+
+    <select id="getMonthExpense" resultType="java.math.BigDecimal">
+        SELECT COALESCE(SUM(bill_money), 0)
+        FROM t_record_account
+        WHERE user_id = #{userId}
+          AND classify_type = '0'
+          AND YEAR(record_time) = #{year}
+          AND MONTH(record_time) = #{month}
+    </select>
+
+    <select id="getMonthIncome" resultType="java.math.BigDecimal">
+        SELECT COALESCE(SUM(bill_money), 0)
+        FROM t_record_account
+        WHERE user_id = #{userId}
+          AND classify_type = '1'
+          AND YEAR(record_time) = #{year}
+          AND MONTH(record_time) = #{month}
+    </select>
+
+    <select id="getRecentRecords" resultType="cn.rollin.passwordassistant.pojo.entity.RecordAccount">
+        SELECT 
+            a.*,
+            c.icon_name
+        FROM t_record_account a
+        LEFT JOIN t_classify c ON a.classify_id = c.id
+        WHERE a.user_id = #{userId}
+          AND a.record_time >= DATE_SUB(CURDATE(), INTERVAL #{days} DAY)
+        ORDER BY a.record_time DESC
+    </select>
+
+</mapper> 

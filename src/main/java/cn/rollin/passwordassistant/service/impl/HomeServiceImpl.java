@@ -1,10 +1,15 @@
 package cn.rollin.passwordassistant.service.impl;
 
+import cn.hutool.core.util.ObjectUtil;
+import cn.rollin.passwordassistant.common.enums.ResStatusEnum;
+import cn.rollin.passwordassistant.common.exception.BizException;
 import cn.rollin.passwordassistant.common.res.Response;
 import cn.rollin.passwordassistant.mapper.BudgetMapper;
+import cn.rollin.passwordassistant.mapper.ClassifyMapper;
 import cn.rollin.passwordassistant.mapper.RecordAccountMapper;
 import cn.rollin.passwordassistant.pojo.dto.HomeStatisticsRes;
 import cn.rollin.passwordassistant.pojo.dto.RecordAccountReq;
+import cn.rollin.passwordassistant.pojo.entity.Classify;
 import cn.rollin.passwordassistant.pojo.entity.RecordAccount;
 import cn.rollin.passwordassistant.service.IHomeService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +34,9 @@ public class HomeServiceImpl implements IHomeService {
 
     @Autowired
     private RecordAccountMapper recordAccountMapper;
+
+    @Autowired
+    private ClassifyMapper classifyMapper;
 
     @Autowired
     private BudgetMapper budgetMapper;
@@ -106,24 +114,27 @@ public class HomeServiceImpl implements IHomeService {
 
         return Response.buildSuccess(response);
     }
-    
+
     @Override
     public Response<Object> recordAccount(Long userId, RecordAccountReq req) {
         // 创建记账记录
         RecordAccount record = new RecordAccount();
         record.setUserId(userId);
         record.setBillMoney(req.getBillMoney().setScale(2, BigDecimal.ROUND_HALF_UP));
-        record.setClassifyId(req.getClassifyId());
-        record.setClassifyName(req.getClassifyName());
-        record.setClassifyType(req.getClassifyType());
+        Long classifyId = req.getClassifyId();
+        Classify classify = classifyMapper.selectById(classifyId);
+        if (ObjectUtil.isEmpty(classify)) {
+            throw new BizException(ResStatusEnum.CATEGORY_NOT_FOUND);
+        }
+        record.setClassifyId(classifyId);
+        record.setClassifyName(classify.getClassifyName());
+        record.setClassifyType(classify.getAddType());
         record.setRemark(req.getRemark());
-        // 设置记账时间为当天的23:59:59
-        record.setRecordTime(LocalDateTime.of(req.getRecordTime(), LocalTime.MAX));
+        record.setRecordTime(LocalDateTime.now());
         record.setUpdatedTime(LocalDateTime.now());
-        
         // 保存记录
         recordAccountMapper.insert(record);
-        
+
         return Response.buildSuccess();
     }
-} 
+}

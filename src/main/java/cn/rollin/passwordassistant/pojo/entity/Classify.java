@@ -12,64 +12,46 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * 用户表
+ * 分类表
  *
  * @author rollin
- * @date 2025-03-25 23:30:28
+ * @date 2025-03-25 23:31:46
  */
 @Getter
 @Setter
 @Builder
-@TableName("t_user")
-public class User implements Serializable {
+@TableName("t_classify")
+public class Classify implements Serializable {
 
     /**
-     * 用户ID，自增
+     * 分类id
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private Long userId;
+    private Long id;
 
     /**
-     * 用户名
+     * 分类名称
      */
-    @TableField("username")
-    private String username;
+    @TableField("classify_name")
+    private String classifyName;
 
     /**
-     * 电子邮件地址
+     * 支付类型 (0-支出，1-收入)
      */
-    @TableField("email")
-    private String email;
+    @TableField("type")
+    private String type;
 
     /**
-     * 密码
+     * 分类类型 (0-预设，1-用户新增)
      */
-    @TableField("password")
-    private String password;
+    @TableField("add_type")
+    private String addType;
 
     /**
-     * 密码盐值
+     * 图标名称
      */
-    @TableField("salt")
-    private String salt;
-
-    /**
-     * 个性签名
-     */
-    @TableField("signature")
-    private String signature;
-
-    /**
-     * 用户状态：0-有效，1-无效
-     */
-    @TableField("status")
-    private String status;
-
-    /**
-     * 头像URL
-     */
-    @TableField("avatar_url")
-    private String avatarUrl;
+    @TableField("icon_name")
+    private String iconName;
 
     /**
      * 创建时间

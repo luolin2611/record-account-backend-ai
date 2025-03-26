@@ -31,6 +31,7 @@ public enum ResStatusEnum {
     TOKEN_INVALID("ERM0008", "认证信息无效"),
     FILE_UPLOAD_ERROR("ERM0009", "文件上传失败"),
     FILE_DOWNLOAD_ERROR("ERM0010", "文件下载失败"),
+    CATEGORY_NOT_FOUND("ERM0012", "分类不存在"),
     ;
 
 

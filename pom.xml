@@ -115,6 +115,11 @@
             <version>8.5.7</version>
         </dependency>
 
+        <!-- 引入Alibaba AI -->
+        <dependency>
+            <groupId>com.alibaba.cloud.ai</groupId>
+            <artifactId>spring-ai-alibaba-starter</artifactId>
+            <version>1.0.0-M5.1</version>
+        </dependency>
     </dependencies>
-
 </project>

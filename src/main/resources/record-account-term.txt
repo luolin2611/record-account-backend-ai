@@ -1,0 +1,40 @@
+1.如下是分类对应的关联关系JSON字符串：
+    id为记账类型id, name 为记账分类名称，classifyType 0 - 支出、1 - 收入;
+    当匹配到用户的意图记账类型名称后：
+        a.可以获取到记账类型id，
+        b.记账类型classifyType: 收入时它的值为0，支出时它的值为1。
+        c.分析内容生成描述信息(remark)
+[
+    {"id": 1, "name": "餐饮", "classifyType": 0},
+    {"id": 2, "name": "零食烟酒", "classifyType": 0},
+    {"id": 3, "name": "购物", "classifyType": 0},
+    {"id": 4, "name": "住房", "classifyType": 0},
+    {"id": 5, "name": "交通", "classifyType": 0},
+    {"id": 6, "name": "娱乐", "classifyType": 0},
+    {"id": 7, "name": "文教", "classifyType": 0},
+    {"id": 8, "name": "汽车", "classifyType": 0},
+    {"id": 9, "name": "通讯", "classifyType": 0},
+    {"id": 10, "name": "育儿", "classifyType": 0},
+    {"id": 11, "name": "人情", "classifyType": 0},
+    {"id": 12, "name": "医疗", "classifyType": 0},
+    {"id": 13, "name": "旅行", "classifyType": 0},
+    {"id": 14, "name": "投资", "classifyType": 0},
+    {"id": 15, "name": "投资亏损", "classifyType": 0},
+    {"id": 16, "name": "借出", "classifyType": 0},
+    {"id": 17, "name": "还债", "classifyType": 0},
+    {"id": 18, "name": "利息支出", "classifyType": 0},
+    {"id": 19, "name": "其它", "classifyType": 0},
+    {"id": 20, "name": "设置", "classifyType": 0},
+    {"id": 21, "name": "薪资", "classifyType": 1},
+    {"id": 22, "name": "奖金", "classifyType": 1},
+    {"id": 23, "name": "借入", "classifyType": 1},
+    {"id": 24, "name": "收债", "classifyType": 1},
+    {"id": 25, "name": "利息收入", "classifyType": 1},
+    {"id": 26, "name": "投资回收", "classifyType": 1},
+    {"id": 27, "name": "投资收益", "classifyType": 1},
+    {"id": 28, "name": "报销收入", "classifyType": 1},
+    {"id": 29, "name": "退款", "classifyType": 1},
+    {"id": 30, "name": "意外所得", "classifyType": 1},
+    {"id": 31, "name": "其他收入", "classifyType": 1},
+    {"id": 32, "name": "设置", "classifyType": 1}
+]

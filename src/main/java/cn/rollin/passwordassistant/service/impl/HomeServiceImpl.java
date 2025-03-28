@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -74,9 +73,9 @@ public class HomeServiceImpl implements IHomeService {
         // 按日期分组并按日期逆序排序
         Map<String, List<RecordAccount>> recordsByDate = recentRecords.stream()
                 .collect(Collectors.groupingBy(
-                    record -> record.getRecordTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                    () -> new TreeMap<String, List<RecordAccount>>(Comparator.reverseOrder()),
-                    Collectors.toList()
+                        record -> record.getRecordTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                        () -> new TreeMap<String, List<RecordAccount>>(Comparator.reverseOrder()),
+                        Collectors.toList()
                 ));
 
         // 构建返回数据

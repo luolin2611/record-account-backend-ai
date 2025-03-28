@@ -8,7 +8,12 @@ spring:
     url: jdbc:mysql://127.0.0.1:13309/record-account-ai?characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: rollin123
-
+  ai:
+    dashscope:
+      api-key: sk-af788cd3e4ec46428201d347925b2791
+    chat:
+      options:
+        model: qwen-max
   mail:
     host: smtp.163.com
     username: 18946025623@163.com
@@ -61,4 +66,4 @@ minio:
 
 logging:
   level:
-    root: debug
+    root: info

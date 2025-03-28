@@ -5,7 +5,7 @@ import cn.rollin.passwordassistant.pojo.dto.HomeStatisticsRes;
 import cn.rollin.passwordassistant.pojo.dto.RecordAccountReq;
 
 public interface IHomeService {
-    
+
     /**
      * 获取首页统计数据
      *
@@ -13,7 +13,7 @@ public interface IHomeService {
      * @return 统计数据
      */
     Response<HomeStatisticsRes> getHomeStatistics(Long userId);
-    
+
     /**
      * 记账
      *
@@ -22,4 +22,4 @@ public interface IHomeService {
      * @return 操作结果
      */
     Response<Object> recordAccount(Long userId, RecordAccountReq req);
-} 
+}

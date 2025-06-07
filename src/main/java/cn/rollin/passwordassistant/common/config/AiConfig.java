@@ -27,7 +27,9 @@ public class AiConfig {
     }
 
     /**
-     * @return
+     * 记账function call
+     *
+     * @return 记账结果
      */
     @Bean
     @Description("处理记账功能")

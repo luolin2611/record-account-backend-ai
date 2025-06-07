@@ -52,6 +52,12 @@ public class AiController {
                 .build();
     }
 
+    /**
+     * AI 聊天接口
+     *
+     * @param message 消息
+     * @return 流式响应结果
+     */
     @CrossOrigin
     @GetMapping(value = "/record", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> generateStreamAsString(@RequestParam(value = "message", defaultValue = "讲个笑话") String message) {
@@ -65,5 +71,4 @@ public class AiController {
                 .doOnNext(System.out::println)
                 .concatWith(Flux.just("[complete]"));
     }
-
 }
